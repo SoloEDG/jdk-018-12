@@ -2,8 +2,10 @@ import { ref } from "vue";
 import { useStudio } from "../../../shared/useStudio";
 import { decodeImage } from "../lib/decode";
 import { demoImage } from "../lib/demo";
+import { useRetouch } from "../../retouch/model/useRetouch";
 export function useSource() {
   const { doc, notice, invalidate } = useStudio();
+  const retouch = useRetouch();
   const loading = ref(false);
   let ticket = 0;
   async function load(url: string, name: string) {
@@ -14,6 +16,8 @@ export function useSource() {
       if (id !== ticket) return;
       doc.asset = asset;
       doc.crop = { x: 0, y: 0, width: 1, height: 1 };
+      // 换图后旧的原图坐标锚点全部失效，连撤销历史一起重置
+      retouch.resetForNewImage();
       invalidate();
       notice.value = "图片已载入";
     } catch (e) {

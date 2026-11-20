@@ -1,4 +1,12 @@
-import type { StudioDocument } from "./document";
+import type { StudioDocument, RetouchLayer } from "./document";
+export function createRetouchLayer(): RetouchLayer {
+  return {
+    edits: [],
+    strategy: "reproject",
+    past: [],
+    future: [],
+  };
+}
 export function createDocument(): StudioDocument {
   return {
     asset: null,
@@ -14,6 +22,7 @@ export function createDocument(): StudioDocument {
       background: "#101216",
     },
     grid: null,
+    retouch: createRetouchLayer(),
     revision: 0,
   };
 }

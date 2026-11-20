@@ -4,6 +4,7 @@ import { useWorkspace } from "./useWorkspace";
 import { SourcePanel } from "../features/source";
 import { CropPanel } from "../features/crop";
 import { MappingPanel } from "../features/mapping";
+import { RetouchPanel } from "../features/retouch";
 import { PreviewPanel } from "../features/preview";
 import { ExportPanel } from "../features/export";
 const w = useWorkspace();
@@ -33,7 +34,7 @@ const w = useWorkspace();
       </div>
     </div>
     <div class="editor">
-      <aside><SourcePanel /><CropPanel /><MappingPanel /></aside>
+      <aside><SourcePanel /><CropPanel /><MappingPanel /><RetouchPanel /></aside>
       <div class="result"><PreviewPanel /><ExportPanel /></div>
     </div>
     <footer>
